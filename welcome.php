@@ -6,11 +6,11 @@
     $keywords = $_POST['keywords'];
     $costForTwo = (int) $_POST['costForTwo'];
 		$location = $_POST['location'];
-    $radius = ((int) $_POST['radius']) * 1000;
+    $radius = !empty($_POST['radius']) ? ((int) $_POST['radius']) * 1000 : 5000;
 
 		$result = getRestaurantsList($keywords, $location, $radius);
 
-		echo $keywords, $costForTwo, $location, $radius;
+		// echo $keywords, $costForTwo, $location, $radius;
 		echo $result[0]['restaurant']['name'];
 	}
 ?>
