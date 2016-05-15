@@ -26,7 +26,7 @@
 
 		<div>
 		    <form action="" method="post">
-          <label>Keywords:</label></br>
+          <label>What do you wanna eat?:</label></br>
 			    <input type="text" name="keywords" style="width: 50%"/> <br /> <br />
 			    <label>Cost for two:</label>
           <select name="costForTwo">
