@@ -1,48 +1,46 @@
 <?php
-  include('session.php');
-	include('search.php');
-
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $keywords = $_POST['keywords'];
-    $costForTwo = (int) $_POST['costForTwo'];
-		$location = $_POST['location'];
-    $radius = !empty($_POST['radius']) ? ((int) $_POST['radius']) * 1000 : 5000;
-
-		$result = getRestaurantsList($keywords, $location, $radius);
-
-		// echo $keywords, $costForTwo, $location, $radius;
-		echo $result[0]['restaurant']['name'];
-	}
+  include('PHP/session.php');
 ?>
 <html>
-
   <head>
     <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="css/welcome.css">
+    <script src="JS/jquery-2.2.3.js"> </script>
+    <script type="text/javascript">
+      $(document).on('submit', '#search-form', function() {
+        $(".result").html("<div><img src=images/loading.gif /></div>");
+        $.post('PHP/searchResults.php', $(this).serialize(), function(data) {
+          $(".result").html(data);
+        });
+        return false;
+      });
+    </script>
 	</head>
 
   <body>
-    <h1>Welcome <?php echo $login_session; ?>!!</h1>
-    <h2><a href="logout.php">Sign Out</a></h2>
-
-		<div>
-		    <form action="" method="post">
-          <label>What do you wanna eat?:</label></br>
-			    <input type="text" name="keywords" style="width: 50%"/> <br /> <br />
-			    <label>Cost for two:</label>
-          <select name="costForTwo">
-            <option value="" disabled="disabled" selected="selected">-- select --</option>
-  				  <option value="500">500</option>
-            <option value="1000">1000</option>
-				    <option value="2000">2000</option>
+    <!-- <img src="images/food-chronicles.png" style="float: left;"/> -->
+    <div class="content">
+      <div class="username">
+        <p><b>Welcome <?php echo $login_session; ?>!!&nbsp&nbsp|&nbsp&nbsp<a href="logout.php">SIGN OUT</a></b></p>
+      </div>
+		  <div class="div_center">
+		    <form action="" method="post" id="search-form">
+			    <input type="text" name="keywords" placeholder="Search for?" autofocus="autofocus"//>
+          <select name="costForTwo" class="styled-select">
+  				  <option value="500">₹500</option>
+            <option value="1000">₹1000</option>
+				    <option value="2000">₹2000</option>
 				    <option value="-1">∞</option>
-			    </select><br /> <br />
-			    <label>Location:</label> <br />
-          <input type="text" name="location" style="width: 50%"/> <br /> <br />
-          <label>How far are you willing to go?</label> <br />
-          <input type="text" name="radius" placeholder="inKM"/> <br />
-    	    <input type="submit" value="Submit "/><br />
+			    </select>
+          <input type="text" name="location" placeholder="Location"/>
+          <input type="text" name="radius" placeholder="Radius"/>
+    	    <input type="submit" value="Search"/><br />
 		    </form>
-		</div>
+		  </div>
+      <div class="result">
+
+      </div>
+    </div>
 	</body>
 
 </html>

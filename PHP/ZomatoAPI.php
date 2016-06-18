@@ -26,6 +26,6 @@ function getRestaurantsList($keywords, $location, $radius) {
                           "&radius=".$radius.
                           "&sort=real_distance");
 	$response = json_decode($url, true);
-	return $response['restaurants'];
+	return $response;
 }
 ?>
