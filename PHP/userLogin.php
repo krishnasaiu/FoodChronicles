@@ -9,18 +9,18 @@
       		$password = hash('sha512', mysqli_real_escape_string($db, $_POST['password']));
 
       		$sql = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
-      		$result = mysqli_query($db, $sql);
-      		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-      		$active = $row['id'];
+      	  $result = mysqli_query($db, $sql);
+      	  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    		  $active = $row['id'];
 
-      		$count = mysqli_num_rows($result);
+    		  $count = mysqli_num_rows($result);
 
-      		if ($count == 1) {
-         		$_SESSION['login_user'] = $username;
-         		header("location: ../welcome.php");
-      		} else {
-         		$_SESSION["message"] = "Username or Password is invalid!!";
+    		  if ($count == 1) {
+       		  $_SESSION['login_user'] = $username;
+       		  header("location: ../welcome.php");
+          } else {
+         	  $_SESSION["message"] = "Username or Password is invalid!!";
             header("location: ../login.php");
-      		}
+    		  }
    	}
 ?>

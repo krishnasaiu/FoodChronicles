@@ -6,10 +6,10 @@ function get_url_contents($url) {
 	$customHeader = array('user-key: '.'7a23aa4614aecba1b3d05cb94d89540c', 'Accept: application/json');
   $timeout = 5;
 
-  curl_setopt ($crl, CURLOPT_URL, $url);
-  curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($crl, CURLOPT_URL, $url);
+  curl_setopt($crl, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($crl, CURLOPT_HTTPHEADER, $customHeader);
-  curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
+  curl_setopt($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
 
   $ret = curl_exec($crl);
   curl_close($crl);
