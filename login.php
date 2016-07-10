@@ -35,7 +35,7 @@ function getError() {
 	<body onload="toggle()">
     <div class="login-page">
       <div class="form">
-        <form class="register-form" action="PHP/userRegister.php" method="post">
+        <form class="register-form" action="php/userRegister.php" method="post">
           <input type="text" name="username" placeholder="Username" autofocus="autofocus" >
           <input type="text" name="email" placeholder="E-Mail" >
           <input type="password" name="password" placeholder="Password" >
@@ -43,7 +43,7 @@ function getError() {
           <button id="register">create</button>
           <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
-        <form class="login-form" action="PHP/userLogin.php" method="post">
+        <form class="login-form" action="php/userLogin.php" method="post">
           <input type="text" name="username" placeholder="Username" autofocus="autofocus">
           <input type="password" name="password" placeholder="Password" >
           <button id="login">login</button>

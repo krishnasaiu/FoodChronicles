@@ -1,15 +1,15 @@
 <?php
-  include('PHP/session.php');
+  include('php/session.php');
 ?>
 <html>
   <head>
     <title>Welcome</title>
+    <script src="js/jquery-2.2.3.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/welcome.css">
-    <script src="JS/jquery-2.2.3.js"> </script>
     <script type="text/javascript">
       $(document).on('submit', '#search-form', function() {
         $(".result").html("<div><img src=images/loading.gif /></div>");
-        $.post('PHP/searchResults.php', $(this).serialize(), function(data) {
+        $.post('php/searchResults.php', $(this).serialize(), function(data) {
           $(".result").html(data);
         });
         return false;
