@@ -13,10 +13,6 @@ function get_url_contents($url) {
   curl_setopt($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
 //  echo curl_getinfo($crl, CURLINFO_EFFECTIVE_URL);
   $ret = curl_exec($crl);
-  if( $ret === null || $ret == FALSE || $ret == '' )
-  {
-    return 'Sorry couldn\'t process your query';
-  }
   curl_close($crl);
 
   return $ret;
@@ -24,6 +20,9 @@ function get_url_contents($url) {
 
 function getRestaurantsList($keywords, $location, $radius) {
 	$coordinates = getCoordinates($location);
+  if (strcmp($coordinates['status'], 'failed') == 0) {
+    return "Sorry coudn't process your request";
+  }
 	$url = get_url_contents("https://developers.zomato.com/api/v2.1/search?".
                           "q=".str_replace(' ', '%20', $keywords).
                           "&lat=".$coordinates['lat'].
@@ -31,6 +30,9 @@ function getRestaurantsList($keywords, $location, $radius) {
                           "&radius=".$radius.
                           "&sort=real_distance");
 	$response = json_decode($url, true);
+  if ($response['results_found'] == 0) {
+    return "Sorry coudn't process your request";
+  }
 	return $response;
 }
 ?>
