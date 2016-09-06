@@ -15,7 +15,7 @@
         return false;
       });
     </script>
-	</head>
+  </head>
 
   <body>
     <!-- <img src="images/food-chronicles.png" style="float: left;"/> -->
@@ -30,7 +30,7 @@
   				  <option value="500">₹500</option>
             <option value="1000">₹1000</option>
 				    <option value="2000">₹2000</option>
-				    <option value="-1">∞</option>
+				    <option value="2147483647">∞</option>
 			    </select>
           <input type="text" name="location" placeholder="Location"/>
           <input type="text" name="radius" placeholder="Radius"/>

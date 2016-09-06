@@ -38,6 +38,7 @@ function getError() {
         <form class="register-form" action="php/userRegister.php" method="post">
           <input type="text" name="username" placeholder="Username" autofocus="autofocus" >
           <input type="text" name="email" placeholder="E-Mail" >
+          <input type="text" name="phone" placeholder="Mobile#" >
           <input type="password" name="password" placeholder="Password" >
           <input type="password" name="cpassword" placeholder="Confirm Password" >
           <button id="register">create</button>
