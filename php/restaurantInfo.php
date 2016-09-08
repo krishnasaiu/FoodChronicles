@@ -20,6 +20,7 @@
       word-wrap: break-word;
       background: url('images/white-background.jpg');
       background: rgba(255, 255, 255, 1);\">";
+      echo "<center><img src=\"".$value['restaurant']['featured_image']."\" alt=\"".$resname."\" height=\"100\" width=\"100\" align=\"middle\"></center>";
       echo "<h3>".$resname."</h3>";
       $rating = intval(round($value['restaurant']['user_rating']['aggregate_rating'], 0, PHP_ROUND_HALF_UP));
       for ($x = 1; $x <= 5; $x++) {
@@ -31,6 +32,7 @@
       }
       echo "<hr>";
       echo $value['restaurant']['location']['address'];
+      echo "<br><a href=".$value['restaurant']['url']." target=\"_blank\"> Click to know more </a>";
       echo "</div>";
       echo "</body>";
       echo "</html>";
