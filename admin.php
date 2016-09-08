@@ -40,25 +40,26 @@
       ?>
      </div>
         <div  class="div_center_low">
-          <h3>Disable Users</h3>
           <?php
           $sql = "SELECT * FROM users";
 
             $result = mysqli_query($db, $sql);
+            echo "<ul style=\"list-style: none;\">";
+            echo "<li><h2>Disable Users</h2></li>";
             while ($row = mysqli_fetch_assoc($result)) {
               // printf ("%s (%s)\n", $row["id"], $row["username"]);
               $query = "SELECT isActive FROM userDetails WHERE id = \"".$row['id']."\"";
               $result2 = mysqli_query($db, $query);
               $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
               if ($row2['isActive'] !== "1") {
-                echo "<button type=\"button\" id=".$row['id']." class=\"disabled_button\" onclick=\"return change(".$row['id'].");\">".$row["username"]."</button>";
+                echo "<li><button type=\"button\" id=".$row['id']." class=\"disabled_button\" onclick=\"return change(".$row['id'].");\">".$row["username"]."</button></li>";
               } else {
-                echo "<button type=\"button\" id=".$row['id']." class=\"enabled_button\" onclick=\"return change(".$row['id'].");\">".$row["username"]."</button>";
+                echo "<li><button type=\"button\" id=".$row['id']." class=\"enabled_button\" onclick=\"return change(".$row['id'].");\">".$row["username"]."</button></li>";
               }
-              echo "<br>";
+              echo nl2br("\n");
             }
             $result->free();
-
+            echo "</ul>";
           ?>
         </div>
     </div>

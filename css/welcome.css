@@ -186,6 +186,7 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    width: 200px;
     /*width:100%;
 margin-left:0;
 margin-right:0;
@@ -206,4 +207,5 @@ text-align:center;*/
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    width: 200px;
 }
