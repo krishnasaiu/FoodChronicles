@@ -11,8 +11,10 @@
       {
         if (document.getElementById(button_id).className === 'disabled_button')  {
           document.getElementById(button_id).className = 'enabled_button'
+          window.location.href = "enableUser.php?isActive=1&id=" + button_id;
         } else {
           document.getElementById(button_id).className = 'disabled_button'
+          window.location = "enableUser.php?isActive=0&id=" + button_id;
         }
       }
     </script>
